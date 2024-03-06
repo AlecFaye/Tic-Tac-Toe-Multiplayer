@@ -1,10 +1,10 @@
-import React, { userState } from "react";
+import React, { useState } from "react";
 
 function SignUp() {
-    const [user, setUser] = userState(null);
+    const [user, setUser] = useState(null);
 
     const signup = () => {
-
+        
     };
 
     return (
@@ -35,6 +35,8 @@ function SignUp() {
                     setUser({ ...user, password: event.target.value });
                 }}
             />
+
+            <button onClick={signup}>Sign Up</button>
         </div>
     );
 };
