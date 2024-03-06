@@ -4,15 +4,11 @@ import Cookies from "universal-cookie";
 
 function Login({ setIsAuth }) {
     const cookies = new Cookies();
-
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
     const login = () => {
-        Axios.post("http://localhost:3001/login", { 
-            username, 
-            password
-        }).then((res) => {
+        Axios.post("http://localhost:3001/login", { username, password }).then((res) => {
             console.log("Message: " + res.data.message);
 
             console.log(res.data.token);
