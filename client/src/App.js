@@ -1,4 +1,3 @@
-import './App.css';
 import JoinGame from './components/JoinGame';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
@@ -38,17 +37,24 @@ function App() {
     }
 
     return (
-        <div> 
+        <div className="bg-dark fill"> 
             {isAuth ? (
-                <Chat client={ client }>
-                    <JoinGame />
-                    <button onClick={logOut}>Log Out</button>
-                </Chat>
+                <div className="App">
+                    <Chat client={ client }>
+                        <JoinGame logOut={ logOut } />
+                    </Chat>
+                </div>
                 ) : (
-                <>
-                    <SignUp setIsAuth={setIsAuth}/>
-                    <Login setIsAuth={setIsAuth} />
-                </>
+                <div className="container fill">
+                    <div className="row justify-content-center align-items-center fill">
+                        <div className="col-lg-4 col-md-6 col-sm-6 mx-auto">
+                            <SignUp setIsAuth={setIsAuth}/>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-6 mx-auto">
+                            <Login setIsAuth={setIsAuth} />
+                        </div>
+                    </div>
+                </div>
             )}
         </div>
     );

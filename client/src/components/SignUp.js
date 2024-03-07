@@ -22,35 +22,54 @@ function SignUp({ setIsAuth }) {
     };
 
     return (
-        <div>
-            <label>Sign Up</label>
+        <div className="card">
+            <div className="card-header">
+                <h4 className="card-title">Sign Up</h4>
+            </div>
+            <div className="card-body">
+                <div className="mb-3">
+                    <label className="form-label">First Name</label>
+                    <input 
+                        type="text"
+                        className="form-control"
+                        onChange={(event) => {
+                            setUser({ ...user, firstName: event.target.value });
+                        }}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Last Name</label>
+                    <input 
+                        type="text"
+                        className="form-control"
+                        onChange={(event) => {
+                            setUser({ ...user, lastName: event.target.value });
+                        }}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Username</label>
+                    <input 
+                        type="text"
+                        className="form-control"
+                        onChange={(event) => {
+                            setUser({ ...user, username: event.target.value });
+                        }}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <input 
+                        type="text"
+                        className="form-control"
+                        onChange={(event) => {
+                            setUser({ ...user, password: event.target.value });
+                        }}
+                    />
+                </div>
 
-            <input 
-                placeholder="First Name" 
-                onChange={(event) => {
-                    setUser({ ...user, firstName: event.target.value });
-                }}
-            />
-            <input 
-                placeholder="Last Name" 
-                onChange={(event) => {
-                    setUser({ ...user, lastName: event.target.value });
-                }}
-            />
-            <input 
-                placeholder="Username" 
-                onChange={(event) => {
-                    setUser({ ...user, username: event.target.value });
-                }}
-            />
-            <input 
-                placeholder="Password" 
-                onChange={(event) => {
-                    setUser({ ...user, password: event.target.value });
-                }}
-            />
-
-            <button onClick={signup}>Sign Up</button>
+                <button type="button" className="btn btn-primary w-100" onClick={signup}>Sign Up</button>
+            </div>
         </div>
     );
 };

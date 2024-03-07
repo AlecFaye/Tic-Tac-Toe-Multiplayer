@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useChatContext, Channel } from "stream-chat-react";
 import Game from "./Game";
 
-function JoinGame() {
+function JoinGame({ logOut }) {
     const [rivalUserName, setRivalUserName] = useState("");
     const { client } = useChatContext();
     const [channel, setChannel] = useState(null);
@@ -30,17 +30,26 @@ function JoinGame() {
                     <Game channel={ channel } />
                 </Channel>
                 ) : (
-                <div className="joinGame">
-                    <h4>Create Game</h4>
-
-                    <input 
-                        placeholder="Username of rival..." 
-                        onChange={(event) => {
-                            setRivalUserName(event.target.value);
-                        }} 
-                    />
-
-                    <button onClick={createChannel}>Join/Start Game</button>
+                <div className="card">
+                    <div className="card-header">
+                        <h4 className="card-title">Create Game</h4>
+                    </div>
+                    <div className="card-body">
+                        <div className="mb-3">
+                            <label className="form-label">Rival Username</label>
+                            <input 
+                                type="text"
+                                className="form-control"
+                                onChange={(event) => {
+                                    setRivalUserName(event.target.value);
+                                }} 
+                            />
+                        </div>
+                        <button type="button" className="btn btn-primary w-100" onClick={createChannel}>Join/Start Game</button>
+                    </div>
+                    <div className="card-footer">
+                        <button type="button" className="btn btn-secondary float-end" onClick={logOut}>Log Out</button>
+                    </div>
                 </div>
             )}
         </>

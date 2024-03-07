@@ -9,14 +9,6 @@ function Login({ setIsAuth }) {
 
     const login = () => {
         Axios.post("http://localhost:3001/login", { username, password }).then((res) => {
-            console.log("Message: " + res.data.message);
-
-            console.log(res.data.token);
-            console.log(res.data.userId);
-            console.log(res.data.firstName);
-            console.log(res.data.lastName);
-            console.log(res.data.username);
-
             const { firstName, lastName, username, token, userId } = res.data;
 
             cookies.set("token", token);
@@ -30,23 +22,34 @@ function Login({ setIsAuth }) {
     };
 
     return (
-        <div>
-            <label>Login</label>
+        <div className="card">
+            <div className="card-header">
+                <h4 className="card-title">Login</h4>
+            </div>
+            <div className="card-body">
+                <div className="mb-3">
+                    <label className="form-label">Username</label>
+                    <input 
+                        type="text"
+                        className="form-control"
+                        onChange={(event) => {
+                            setUserName(event.target.value);
+                        }}
+                        />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <input 
+                        type="text"
+                        className="form-control"
+                        onChange={(event) => {
+                            setPassword(event.target.value);
+                        }}
+                        />
+                </div>
 
-            <input 
-                placeholder="Username" 
-                onChange={(event) => {
-                    setUserName(event.target.value);
-                }}
-                />
-            <input 
-                placeholder="Password" 
-                onChange={(event) => {
-                    setPassword(event.target.value);
-                }}
-            />
-
-            <button onClick={login}>Login</button>
+                <button type="button" className="btn btn-primary w-100" onClick={login}>Login</button>
+            </div>
         </div>
     );
 };
